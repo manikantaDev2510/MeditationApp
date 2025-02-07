@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relaxing Sounds</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Video Background */
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            display: flex;
+            justify-content: center;
+            background-color: #3498db;
+            padding: 10px 0;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            font-size: 1.2em;
+        }
+
+        .navbar a:hover {
+            background-color: #2980b9;
+            border-radius: 5px;
+        }
+
+        /* Content Styling */
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #3498db;
+        }
+
+        .sound-player {
+            margin-top: 20px;
+            padding: 20px;
+            background: #f0f0f0;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: flex; /* Enable flexbox */
+            flex-direction: column; /* Stack items vertically */
+            align-items: center; /* Center items horizontally */
+            justify-content: center; /* Center items vertically */
+        }
+
+        .sound-player label {
+            font-size: 1.2em;
+            margin-bottom: 15px; /* Space between label and audio */
+            text-align: center;
+        }
+
+        .sound-player button {
+            margin-top: 15px; /* Space between audio and button */
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            font-size: 1em;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .sound-player button:hover {
+            background-color: #2980b9;
+        }
+
+        .sound-player audio {
+            margin-bottom: 15px; /* Space between audio player and button */
+        }
+
+        .sound-selector {
+            margin-top: 30px;
+        }
+
+        .sound-selector select {
+            font-size: 1.2em;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Video Backgrounds (Each will be shown based on the selected sound) -->
+    <video id="video-background" class="video-background" autoplay muted loop>
+        <source id="video-source" src="" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <a href="meditation.html">Home</a>
+        <a href="yoga.html">Yoga</a>
+        <a href="breathing.html">Breathing Exercise</a>
+        <a href="relaxing-sounds.html">Relaxing Sounds</a>
+        <a href="binaural-sounds.html">Binaural Sounds</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container" id="main-content">
+        <h1>Relaxing Sounds</h1>
+        <p>A curated selection of nature sounds, white noise, and calming music. Mix and match sounds for a personalized relaxation experience.</p>
+
+        <!-- Sound Selector -->
+        <div class="sound-selector">
+            <label for="sound-selection">Choose your sounds:</label>
+            <select id="sound-selection">
+                <option value="bird-sounds">Bird Sounds</option>
+                <option value="waterfall">Waterfall</option>
+                <option value="rain">Rain</option>
+                <option value="forest">Forest</option>
+                <option value="ocean">Ocean</option>
+                <option value="white-noise">White Noise</option>
+                <option value="calming-music">Calming Music</option>
+            </select>
+        </div>
+
+        <!-- Sound Players and Play Buttons -->
+        <div id="bird-sounds-player" class="sound-player hidden">
+            <label>Bird Sounds</label>
+            <audio id="bird-sounds-audio" controls>
+                <source src="assects/sounds/bird-sounds.mp3" type="audio/mp3">
+                Your browser does not support the audio element.
+            </audio>
+            <button onclick="playSound('bird-sounds')">Play</button>
+        </div>
+
+        <div id="waterfall-player" class="sound-player hidden">
+            <label>Waterfall</label>
+            <audio id="waterfall-audio" controls>
+                <source src="assects/sounds/waterfall.mp3" type="audio/mp3">
+                Your browser does not support the audio element.
+            </audio>
+            <button onclick="playSound('waterfall')">Play</button>
+        </div>
+
+        <div id="rain-player" class="sound-player hidden">
+            <label>Rain</label>
+            <audio id="rain-audio" controls>
+                <source src="assects/sounds/rain.mp3" type="audio/mp3">
+                Your browser does not support the audio element.
+            </audio>
+            <button onclick="playSound('rain')">Play</button>
+        </div>
+
+        <div id="forest-player" class="sound-player hidden">
+            <label>Forest</label>
+            <audio id="forest-audio" controls>
+                <source src="assects/sounds/forest.mp3" type="audio/mp3">
+                Your browser does not support the audio element.
+            </audio>
+            <button onclick="playSound('forest')">Play</button>
+        </div>
+
+        <div id="ocean-player" class="sound-player hidden">
+            <label>Ocean</label>
+            <audio id="ocean-audio" controls>
+                <source src="assects/sounds/ocean.mp3" type="audio/mp3">
+                Your browser does not support the audio element.
+            </audio>
+            <button onclick="playSound('ocean')">Play</button>
+        </div>
+
+        <div id="white-noise-player" class="sound-player hidden">
+            <label>White Noise</label>
+            <audio id="white-noise-audio" controls>
+                <source src="assects/sounds/white-noise.mp3" type="audio/mp3">
+                Your browser does not support the audio element.
+            </audio>
+            <button onclick="playSound('white-noise')">Play</button>
+        </div>
+
+        <div id="calming-music-player" class="sound-player hidden">
+            <label>Calming Music</label>
+            <audio id="calming-music-audio" controls>
+                <source src="assects/sounds/calming-music.mp3" type="audio/mp3">
+                Your browser does not support the audio element.
+            </audio>
+            <button onclick="playSound('calming-music')">Play</button>
+        </div>
+    </div>
+
+    <script>
+        const soundSelection = document.getElementById('sound-selection');
+        const videoBackground = document.getElementById('video-background');
+        const videoSource = document.getElementById('video-source');
+        const allPlayers = document.querySelectorAll('.sound-player');
+        const allAudioElements = document.querySelectorAll('audio');
+        const contentElements = document.getElementById('main-content');
+
+        const soundToVideoMapping = {
+            "bird-sounds": "assects/videos/bird-video.mp4",
+            "waterfall": "assects/videos/waterfall-video.mp4",
+            "rain": "assects/videos/rain-video.mp4",
+            "forest": "assects/videos/forest-video.mp4",
+            "ocean": "assects/videos/ocean-video.mp4",
+            "white-noise": "assects/videos/white-noise-video.mp4",
+            "calming-music": "assects/videos/calming-music-video.mp4"
+        };
+
+        soundSelection.addEventListener('change', function () {
+            const selectedSound = soundSelection.value;
+
+            // Hide all sound players
+            allPlayers.forEach(player => player.classList.add('hidden'));
+
+            // Show the selected sound player
+            const selectedPlayer = document.getElementById(`${selectedSound}-player`);
+            if (selectedPlayer) {
+                selectedPlayer.classList.remove('hidden');
+            }
+
+            // Change the video background for the selected sound
+            videoSource.src = soundToVideoMapping[selectedSound];
+            videoBackground.load();  // Refresh the video background
+            videoBackground.play();  // Start the video
+        });
+
+        // Function to play the selected sound and video
+        function playSound(sound) {
+            // Stop all audio elements
+            allAudioElements.forEach(audio => audio.pause());
+
+            // Play the selected audio
+            const audioElement = document.getElementById(`${sound}-audio`);
+            audioElement.play();
+
+            // Hide the content and play video
+            contentElements.style.display = 'none';
+            videoBackground.style.display = 'block'; // Ensure the video background is visible
+        }
+
+        // Initialize with the first sound selection
+        soundSelection.dispatchEvent(new Event('change'));
+    </script>
+
+</body>
+</html>
