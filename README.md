@@ -1,3 +1,5 @@
+![image](https://github.com/user-attachments/assets/2685ab3b-8254-418f-bb08-20264811c07e)
+
 # 🧘‍♂️ Meditation Web Platform
 
 ## 🌿 Overview
